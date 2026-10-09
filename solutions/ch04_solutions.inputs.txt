@@ -1,0 +1,9 @@
+-3.5
+1900
+70
+1.75
+mypassword1
+30
+sunday
+Rock
+scissors
