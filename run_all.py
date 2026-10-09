@@ -43,7 +43,9 @@ def main():
         if code != 0:
             failed.append((name, err))
     if not pattern and importlib.util.find_spec("pytest"):
-        for folder in sorted((ROOT / "examples").glob("ch*")):
+        for folder in sorted((ROOT / "examples").glob("*")):
+            if not any(folder.rglob("test_*.py")):
+                continue
             result = subprocess.run(
                 [sys.executable, "-m", "pytest", "-q", "-p", "no:cacheprovider"],
                 cwd=folder, capture_output=True, text=True, timeout=300)

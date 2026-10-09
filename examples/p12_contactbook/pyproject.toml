@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "contactbook"
+dynamic = ["version"]
+description = "A contact book for the command line."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+authors = [{ name = "Ada Lovelace" }]
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=9", "ruff>=0.16", "mypy>=2.4"]
+
+[project.scripts]
+contacts = "contactbook.cli:main"
+
+[tool.setuptools.dynamic]
+version = { attr = "contactbook.__version__" }
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 70
+
+[tool.ruff.lint]
+extend-select = ["E", "N", "I", "B", "UP"]
+
+[tool.mypy]
+strict = true

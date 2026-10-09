@@ -4,3 +4,8 @@
 tabulate==0.10.0
 pytest==9.1.1
 pytest-cov==7.1.0
+requests==2.34.2
+httpx==0.28.1
+ruff==0.16.10
+mypy==2.4.0
+build==1.6.1

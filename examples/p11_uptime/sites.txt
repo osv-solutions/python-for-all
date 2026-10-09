@@ -1,0 +1,18 @@
+# Sites to watch, one URL per line. Blank lines and lines starting
+# with # are skipped.
+
+# Practice sites, served by practice_server.py
+http://127.0.0.1:8111/
+http://127.0.0.1:8111/shop
+http://127.0.0.1:8111/api/health
+http://127.0.0.1:8111/old
+http://127.0.0.1:8111/missing
+http://127.0.0.1:8111/hang
+
+# Nothing listens on port 8119:
+http://127.0.0.1:8119/
+
+# Real sites: check your own, and the services you depend on, every few
+# minutes at most. Remove the # to switch a line on.
+# https://www.python.org/
+# https://pypi.org/
