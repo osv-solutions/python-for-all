@@ -88,7 +88,7 @@ logging.basicConfig(level=logging.DEBUG, force=True,
 logger.debug("bill is %s", 48.5)
 logger.warning("people not given, assuming 1")
 print("--- tip.log ---")
-with open("tip.log") as f:
+with open("tip.log", encoding="utf-8") as f:
     print(f.read())
 
 # %% 22.5 Logging instead of print

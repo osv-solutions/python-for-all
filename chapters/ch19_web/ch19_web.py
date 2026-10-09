@@ -323,6 +323,7 @@ for rank, title, loans in rows:
     print(f"{rank}. {title:<6} {int(loans):>3} loans")
 
 # %% 19.12 Under the hood: urllib.request
+import json
 from urllib.request import urlopen
 
 with urlopen(f"{BASE}/api/books/5", timeout=5) as response:

@@ -113,7 +113,8 @@ for region, sales in [("north", 120), ("south", 95), ("east", 143)]:
     folder = reports / region
     folder.mkdir(parents=True, exist_ok=True)
     (folder / "sales.txt").write_text(f"{sales}\n", encoding="utf-8")
-(reports / "README.txt").write_text("Weekly sales by region\n")
+(reports / "README.txt").write_text("Weekly sales by region\n",
+                                   encoding="utf-8")
 
 # %% 11.6 Working with folders
 print(sorted(p.name for p in reports.iterdir()))
