@@ -11,6 +11,8 @@ tested solutions to every chapter's exercises.
 | `chapters/` | One folder per chapter, for example `ch03_text/` |
 | `projects/` | One folder per project, for example `p01_guessing_game/` |
 | `solutions/` | Worked solutions to each chapter's exercises: start with `solutions/README.md` |
+| `examples/` | Small multi-file projects that the book builds step by step, such as the tested code of Chapter 17 |
+| `requirements.txt` | The packages used from Chapter 16 on, at the versions the book was tested with |
 
 Each folder holds the same code twice: as a plain Python script (`.py`) and as a
 Jupyter notebook (`.ipynb`) with the book's section headings.
@@ -19,7 +21,16 @@ Jupyter notebook (`.ipynb`) with the book's section headings.
 
 You need Python 3.14 or newer (Chapter 1 shows how to install it). Until
 Chapter 16, the code uses only Python and its standard library, so there is
-nothing else to install. Run a chapter's code from its folder:
+nothing else to install. For the later chapters, create a virtual environment
+and install the packages (Chapter 16 explains each step):
+
+```bash
+python -m venv .venv
+source .venv/bin/activate          # Windows: .venv\Scripts\activate
+python -m pip install -r requirements.txt
+```
+
+Run a chapter's code from its folder:
 
 ```bash
 cd chapters/ch02_values
@@ -45,7 +56,8 @@ is printed and the script carries on.
 ## Checking everything
 
 `run_all.py` runs every script in the repository, replaying the book's answers,
-and reports any that fail:
+and reports any that fail. If `pytest` is installed, it also runs the tests in
+`examples/`:
 
 ```bash
 python run_all.py

@@ -21,3 +21,9 @@ There is rarely only one correct solution. If your code gets the same result in 
 | 9. Modules and the Standard Library | [ch09_solutions.md](ch09_solutions.md) |
 | 10. Errors, Exceptions and Debugging | [ch10_solutions.md](ch10_solutions.md) |
 | 11. Files and Data Formats | [ch11_solutions.md](ch11_solutions.md) |
+| 12. Classes and Objects | [ch12_solutions.md](ch12_solutions.md) |
+| 13. Inheritance, Composition and Data Classes | [ch13_solutions.md](ch13_solutions.md) |
+| 14. Comprehensions, Iterators and Generators | [ch14_solutions.md](ch14_solutions.md) |
+| 15. Functional Tools and Decorators | [ch15_solutions.md](ch15_solutions.md) |
+| 16. Virtual Environments and Packages | [ch16_solutions.md](ch16_solutions.md) |
+| 17. Testing Your Code with pytest | [ch17_solutions.md](ch17_solutions.md) |

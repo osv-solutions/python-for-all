@@ -1,0 +1,12 @@
+go north
+examine note
+go east
+go south
+go east
+take key
+go west
+go north
+go east
+take crown
+go west
+go south

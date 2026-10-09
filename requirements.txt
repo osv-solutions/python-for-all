@@ -1,0 +1,6 @@
+# Packages used in the book, at the versions it was tested with.
+# Install into a virtual environment (Chapter 16):
+#     python -m pip install -r requirements.txt
+tabulate==0.10.0
+pytest==9.1.1
+pytest-cov==7.1.0

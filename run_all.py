@@ -3,9 +3,12 @@
 Scripts that ask for keyboard input are fed the answers used in the book,
 from the matching <name>.inputs.txt file.
 
+With pytest installed, the tests in examples/ run too.
+
 Usage:  python run_all.py            (all scripts)
         python run_all.py ch03       (only scripts whose path contains "ch03")
 """
+import importlib.util
 import pathlib
 import subprocess
 import sys
@@ -39,6 +42,15 @@ def main():
         print(f"{'ok  ' if code == 0 else 'FAIL'} {name}")
         if code != 0:
             failed.append((name, err))
+    if not pattern and importlib.util.find_spec("pytest"):
+        for folder in sorted((ROOT / "examples").glob("ch*")):
+            result = subprocess.run(
+                [sys.executable, "-m", "pytest", "-q", "-p", "no:cacheprovider"],
+                cwd=folder, capture_output=True, text=True, timeout=300)
+            name = folder.relative_to(ROOT)
+            print(f"{'ok  ' if result.returncode == 0 else 'FAIL'} {name} (pytest)")
+            if result.returncode != 0:
+                failed.append((name, result.stdout))
     for name, err in failed:
         print(f"\n--- {name}\n{err[-2000:]}")
     print(f"\n{len(failed)} failed" if failed else "\nAll scripts ran successfully.")
