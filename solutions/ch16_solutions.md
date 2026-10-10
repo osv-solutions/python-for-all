@@ -153,9 +153,9 @@ It passes every check of the chapter. It is maintained, with regular releases ov
 
 ## Exercise 16.7
 
-*Rewrite the monthly report of Project 5 with `tabulate`.*
+*Rewrite the monthly report of Project 6 with `tabulate`.*
 
-This solution recreates the sample expenses of Project 5 and the `totals` function from its Step 4 (not printed here), then builds the report as a list of rows:
+This solution recreates the sample expenses of Project 6 and the `totals` function from its Step 4 (not printed here), then builds the report as a list of rows:
 
 <details>
 <summary>Setup code: recreates the data and helpers from the chapter (click to show)</summary>

@@ -92,15 +92,32 @@ TEXT, HTML = "text/plain; charset=utf-8", "text/html; charset=utf-8"
 ROBOTS = "User-agent: *\nDisallow: /private/\n"
 PAGE = """<html><head><title>Bestsellers</title></head><body>
 <h1>This week's bestsellers</h1>
-<table>
+<table id="top">
   <tr><th>Rank</th><th>Title</th><th>Loans</th></tr>
-  <tr><td>1</td><td>Dune</td><td>41</td></tr>
-  <tr><td>2</td><td>Emma</td><td>35</td></tr>
-  <tr><td>3</td><td>Holes</td><td>28</td></tr>
-</table>
-<p><a href="/api/books">All books</a> |
+"""
+for rank, (book_id, loans) in enumerate([(2, 41), (1, 35), (3, 28)], 1):
+    title = BOOKS[book_id - 1]["title"]
+    PAGE += f"""  <tr class="book">
+    <td>{rank}</td>
+    <td class="title"><a href="/books/{book_id}.html">{title}</a></td>
+    <td class="loans">{loans}</td>
+  </tr>
+"""
+PAGE += """</table>
+<p class="nav"><a href="/api/books">All books</a> |
 <a href="/private/staff.html">Staff only</a></p>
 </body></html>"""
+
+def book_page(h, name):
+    for book in BOOKS:
+        if f"{book['id']}.html" == name:
+            return send(h, 200, f"""<html><body>
+<h1>{book['title']}</h1>
+<p>By <span class="author">{book['author']}</span>,
+first published in <span class="year">{book['year']}</span>.</p>
+<p><a href="/bestsellers.html">Back to the bestsellers</a></p>
+</body></html>""", HTML)
+    send(h, 404, "<h1>Not found</h1>", HTML)
 
 GET_ROUTES = {
     "/api/books": list_books, "/api/books/<id>": one_book,
@@ -108,6 +125,7 @@ GET_ROUTES = {
     "/api/echo": echo, "/old/books": moved,
     "/robots.txt": lambda h, _: send(h, 200, ROBOTS, TEXT),
     "/bestsellers.html": lambda h, _: send(h, 200, PAGE, HTML),
+    "/books/<id>": book_page,
 }
 POST_ROUTES = {"/api/books": add_book}
 
@@ -290,39 +308,56 @@ robots.read()
 for path in ["/bestsellers.html", "/private/staff.html"]:
     print(path, robots.can_fetch("ada-book-tool", f"{BASE}{path}"))
 
-# %% 19.11 Scraping web pages politely
-from html.parser import HTMLParser
-
+# %% 19.12 Reading HTML with Beautiful Soup
 html = requests.get(f"{BASE}/bestsellers.html", timeout=5).text
-print(html.splitlines()[4])
+print("\n".join(html.splitlines()[2:9]))
 
-# %% 19.11 Scraping web pages politely
-class TableParser(HTMLParser):
-    def __init__(self):
-        super().__init__()
-        self.rows, self.in_cell = [], False
+# %% 19.12 Reading HTML with Beautiful Soup
+from bs4 import BeautifulSoup
 
-    def handle_starttag(self, tag, attrs):
-        if tag == "tr":
-            self.rows.append([])       # a new row begins
-        self.in_cell = tag in ("td", "th")
+soup = BeautifulSoup(html, "html.parser")
+print(soup.title)
+print(soup.title.get_text())
+print(soup.h1.get_text())
 
-    def handle_endtag(self, tag):
-        self.in_cell = False
+# %% 19.13 Finding elements: find and find_all
+table = soup.find("table", id="top")
+rows = table.find_all("tr")
+print(len(rows), "rows")
+for row in rows:
+    cells = row.find_all(["th", "td"])
+    print([cell.get_text(strip=True) for cell in cells])
 
-    def handle_data(self, data):
-        if self.in_cell:
-            self.rows[-1].append(data)
+# %% 19.13 Finding elements: find and find_all
+for row in soup.find_all("tr", class_="book"):
+    title = row.find("td", class_="title").get_text()
+    loans = int(row.find("td", class_="loans").get_text())
+    print(f"{title:<6} {loans:>3} loans")
 
-# %% 19.11 Scraping web pages politely
-parser = TableParser()
-parser.feed(html)
-header, *rows = parser.rows
-print(header)
-for rank, title, loans in rows:
-    print(f"{rank}. {title:<6} {int(loans):>3} loans")
+# %% 19.13 Finding elements: find and find_all
+for link in soup.find_all("a"):
+    print(f"{link.get_text():<12} {link['href']}")
 
-# %% 19.12 Under the hood: urllib.request
+# %% 19.14 CSS selectors and following links
+print(soup.select_one("#top tr.book .title").get_text())
+titles = [a.get_text() for a in soup.select("td.title a")]
+print(titles)
+print(len(soup.select('a[href^="/private/"]')), "private link")
+
+# %% 19.14 CSS selectors and following links
+from urllib.parse import urljoin
+
+page_url = f"{BASE}/bestsellers.html"
+for a in soup.select("td.title a")[:2]:
+    url = urljoin(page_url, a["href"])
+    page = requests.get(url, timeout=5).text
+    book = BeautifulSoup(page, "html.parser")
+    author = book.select_one(".author").get_text()
+    year = book.select_one(".year").get_text()
+    print(f"{url}\n  {a.get_text()}, {author}, {year}")
+    time.sleep(0.2)                    # a pause between requests
+
+# %% 19.15 Under the hood: urllib.request
 import json
 from urllib.request import urlopen
 
@@ -331,7 +366,7 @@ with urlopen(f"{BASE}/api/books/5", timeout=5) as response:
     book = json.loads(response.read().decode("utf-8"))
 print(book["title"], "by", book["author"])
 
-# %% 19.12 Under the hood: urllib.request
+# %% 19.15 Under the hood: urllib.request
 # Setup: recreates the context this solution builds on (not printed in the book).
 server.shutdown()
 server.server_close()

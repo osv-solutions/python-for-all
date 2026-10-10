@@ -99,15 +99,32 @@ TEXT, HTML = "text/plain; charset=utf-8", "text/html; charset=utf-8"
 ROBOTS = "User-agent: *\nDisallow: /private/\n"
 PAGE = """<html><head><title>Bestsellers</title></head><body>
 <h1>This week's bestsellers</h1>
-<table>
+<table id="top">
   <tr><th>Rank</th><th>Title</th><th>Loans</th></tr>
-  <tr><td>1</td><td>Dune</td><td>41</td></tr>
-  <tr><td>2</td><td>Emma</td><td>35</td></tr>
-  <tr><td>3</td><td>Holes</td><td>28</td></tr>
-</table>
-<p><a href="/api/books">All books</a> |
+"""
+for rank, (book_id, loans) in enumerate([(2, 41), (1, 35), (3, 28)], 1):
+    title = BOOKS[book_id - 1]["title"]
+    PAGE += f"""  <tr class="book">
+    <td>{rank}</td>
+    <td class="title"><a href="/books/{book_id}.html">{title}</a></td>
+    <td class="loans">{loans}</td>
+  </tr>
+"""
+PAGE += """</table>
+<p class="nav"><a href="/api/books">All books</a> |
 <a href="/private/staff.html">Staff only</a></p>
 </body></html>"""
+
+def book_page(h, name):
+    for book in BOOKS:
+        if f"{book['id']}.html" == name:
+            return send(h, 200, f"""<html><body>
+<h1>{book['title']}</h1>
+<p>By <span class="author">{book['author']}</span>,
+first published in <span class="year">{book['year']}</span>.</p>
+<p><a href="/bestsellers.html">Back to the bestsellers</a></p>
+</body></html>""", HTML)
+    send(h, 404, "<h1>Not found</h1>", HTML)
 
 GET_ROUTES = {
     "/api/books": list_books, "/api/books/<id>": one_book,
@@ -115,6 +132,7 @@ GET_ROUTES = {
     "/api/echo": echo, "/old/books": moved,
     "/robots.txt": lambda h, _: send(h, 200, ROBOTS, TEXT),
     "/bestsellers.html": lambda h, _: send(h, 200, PAGE, HTML),
+    "/books/<id>": book_page,
 }
 POST_ROUTES = {"/api/books": add_book}
 

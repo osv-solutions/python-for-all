@@ -36,5 +36,12 @@ def test_key_is_required(base):
 def test_robots_and_page(base):
     assert "Disallow: /private/" in requests.get(
         f"{base}/robots.txt", timeout=5).text
-    assert "<table>" in requests.get(
+    assert '<table id="top">' in requests.get(
         f"{base}/bestsellers.html", timeout=5).text
+
+
+def test_book_pages(base):
+    r = requests.get(f"{base}/books/2.html", timeout=5)
+    assert '<span class="author">Frank Herbert</span>' in r.text
+    r = requests.get(f"{base}/books/99.html", timeout=5)
+    assert r.status_code == 404

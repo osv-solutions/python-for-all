@@ -25,6 +25,7 @@ this one to run that script.
 | `GET /api/slow` | Answers after one second, to try timeouts |
 | `GET /api/echo` | Answers with the headers it received |
 | `GET /old/books` | Redirects (301) to `/api/books` |
-| `GET /robots.txt`, `/bestsellers.html` | A robots file and a web page |
+| `GET /robots.txt`, `/bestsellers.html` | A robots file and a web page to scrape |
+| `GET /books/<id>.html` | A page for one book, linked from the bestsellers |
 
 `test_practice_server.py` checks the server with `pytest` (`python -m pytest`).

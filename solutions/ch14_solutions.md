@@ -158,7 +158,7 @@ Output:
 
 *Write a generator `read_csv_rows(path)` that yields each row of a CSV file as a dictionary, and use it with `Counter` to count the expenses per category in `expenses.csv`.*
 
-First, the sample file from Step 1 of Project 5, so that this solution has data to read:
+First, the sample file from Step 1 of Project 6, so that this solution has data to read:
 
 ```python
 sample = """date,category,description,amount
@@ -205,7 +205,7 @@ fun        2
 total     10
 ```
 
-`read_csv_rows` keeps the file open only while the rows are being read: the `with` block ends when the generator has yielded its last row. The generator expression passes just the category of each row to the `Counter`, so food comes first with 4 expenses, followed by housing, transport and fun with 2 each, in the order they first appear in the file. `total()` adds up all the counts, 10. The taxi with the amount `twenty` is counted too, because counting never looks at the amount; a report that adds up amounts would need the validation of Project 5.
+`read_csv_rows` keeps the file open only while the rows are being read: the `with` block ends when the generator has yielded its last row. The generator expression passes just the category of each row to the `Counter`, so food comes first with 4 expenses, followed by housing, transport and fun with 2 each, in the order they first appear in the file. `total()` adds up all the counts, 10. The taxi with the amount `twenty` is counted too, because counting never looks at the amount; a report that adds up amounts would need the validation of Project 6.
 
 ## Exercise 14.6
 

@@ -1,0 +1,14 @@
+the house
+Cat
+BOOK
+the chair
+the  dog
+stats
+add
+el queso
+the cheese
+add
+la mesa
+the table
+stats
+quit
