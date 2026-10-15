@@ -79,7 +79,7 @@ print("Python is fun)
 Output:
 
 ```text
-  File "errors.py", line 1
+  File "C:\Users\ada\Documents\python-for-all\errors.py", line 1
     print("Python is fun)
           ^
 SyntaxError: unterminated string literal (detected at line 1)
@@ -107,7 +107,7 @@ Output:
 
 ```text
 Traceback (most recent call last):
-  File "errors.py", line 1, in <module>
+  File "C:\Users\ada\Documents\python-for-all\errors.py", line 1, in <module>
     pritn("Python is fun")
     ^^^^^
 NameError: name 'pritn' is not defined. Did you mean: 'print'?
@@ -122,7 +122,7 @@ print("Python is fun"))
 Output:
 
 ```text
-  File "errors.py", line 1
+  File "C:\Users\ada\Documents\python-for-all\errors.py", line 1
     print("Python is fun"))
                           ^
 SyntaxError: unmatched ')'

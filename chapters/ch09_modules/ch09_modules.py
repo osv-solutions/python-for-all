@@ -58,12 +58,25 @@ print(gap.days, "days to go")
 print(date(2028, 3, 1) - date(2028, 2, 1))
 
 # %% 9.6 Files and folders: pathlib
+# Setup: recreates the context this solution builds on (not printed in the book).
+# The book shows this output as Windows prints it: Python's own
+# PureWindowsPath gives exactly the paths a Windows computer shows.
+import pathlib
+_real_path = pathlib.Path
+pathlib.Path = pathlib.PureWindowsPath
+
+# %% 9.6 Files and folders: pathlib
 from pathlib import Path
 
 report = Path("reports") / "2026" / "summary.txt"
 print(report)
 print(report.name, report.stem, report.suffix)
 print(report.parent)
+
+# %% 9.6 Files and folders: pathlib
+# Setup: recreates the context this solution builds on (not printed in the book).
+pathlib.Path = _real_path       # back to this computer's own paths
+from pathlib import Path
 
 # %% 9.6 Files and folders: pathlib
 folder = Path("notes")

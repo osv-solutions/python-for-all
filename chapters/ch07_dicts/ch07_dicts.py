@@ -41,12 +41,13 @@ print(removed, stock)
 
 # %% 7.3 Looping over a dictionary
 capitals = {"India": "New Delhi", "Japan": "Tokyo",
-            "Kenya": "Nairobi", "Peru": "Lima"}
+            "United States": "Washington, D.C.",
+            "England": "London"}
 for country in capitals:
-    print(country, end=" ")
+    print(country)
 print()
 for country, city in capitals.items():
-    print(f"{city} is the capital of {country}.")
+    print(f"{country}: {city}")
 
 # %% 7.3 Looping over a dictionary
 prices = {"tea": 2.50, "cake": 3.75, "soup": 5.25}

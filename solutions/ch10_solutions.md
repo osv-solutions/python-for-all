@@ -148,10 +148,10 @@ Output:
 
 ```text
 Traceback (most recent call last):
-  File "middle.py", line 4, in <module>
+  File "C:\Users\ada\Documents\python-for-all\middle.py", line 4, in <module>
     print(middle([1, 2, 3]))
           ~~~~~~^^^^^^^^^^^
-  File "middle.py", line 2, in middle
+  File "C:\Users\ada\Documents\python-for-all\middle.py", line 2, in middle
     return items[len(items) / 2]
            ~~~~~^^^^^^^^^^^^^^^^
 TypeError: list indices must be integers or slices, not float

@@ -286,7 +286,7 @@ WARNING:average: skipping ''
 DEBUG:average: read 9.0
 ERROR:average: could not read missing.txt
 Traceback (most recent call last):
-  File "average.py", line 3, in average_file
+  File "C:\Users\ada\Documents\python-for-all\average.py", line 3, in average_file
     with open(path) as f:
          ~~~~^^^^^^
 FileNotFoundError: [Errno 2] No such file or directory: 'missing.txt'
