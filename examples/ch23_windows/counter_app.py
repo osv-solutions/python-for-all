@@ -17,7 +17,7 @@ class CounterApp(ttk.Frame):
         self.count.set(self.count.get() + 1)
 
     def reset(self):
-        if messagebox.askyesno("Reset", "Set the counter back to 0?",
+        if messagebox.askyesno("Reset", "Set the number back to 0?",
                                parent=self):
             self.count.set(0)
 
