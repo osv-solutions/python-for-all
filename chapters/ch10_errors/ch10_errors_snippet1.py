@@ -7,6 +7,7 @@ def average(numbers):
     for n in numbers:
         total += n
     breakpoint()
+
     return total / len(numbers)
 
 print(average([4, 8, 6]))
