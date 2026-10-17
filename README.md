@@ -11,7 +11,7 @@ tested solutions to every chapter's exercises.
 | `chapters/` | One folder per chapter, for example `ch03_text/` |
 | `projects/` | One folder per project, for example `p01_guessing_game/` |
 | `solutions/` | Worked solutions to each chapter's exercises: start with `solutions/README.md` |
-| `examples/` | Multi-file code that the book builds step by step: the tested code of Chapter 17, the practice web servers of Chapter 19 and Projects 12–13, the packages of Chapter 22, the contact book of Project 14 and the price watcher of Project 15 (each folder has its own README) |
+| `examples/` | Multi-file code that the book builds step by step: the tested code of Chapter 17, the practice web servers of Chapter 19 and Projects 12–13, the packages of Chapter 22, the Tkinter windows and unit converter of Chapter 23, the contact book of Project 14 and the price watcher of Project 15 (each folder has its own README) |
 | `requirements.txt` | The packages used from Chapter 16 on, at the versions the book was tested with |
 
 Each folder holds the same code twice: as a plain Python script (`.py`) and as a

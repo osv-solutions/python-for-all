@@ -1,0 +1,16 @@
+[
+  {
+    "title": "Dune",
+    "year": 1965,
+    "tags": [
+      "sci-fi"
+    ],
+    "read": true
+  },
+  {
+    "title": "Emma",
+    "year": 1815,
+    "tags": [],
+    "read": false
+  }
+]

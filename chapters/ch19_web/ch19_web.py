@@ -1,4 +1,4 @@
-"""Chapter 19: Talking to the Web: HTTP and APIs
+"""Chapter 19: Talking to the Web: APIs and Web Scraping
 
 Companion code for "Python for All"
 by Vamsi Krishna Kandala. Run it from this folder:

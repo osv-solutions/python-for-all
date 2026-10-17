@@ -1,4 +1,4 @@
-# Solutions: Chapter 19, Talking to the Web: HTTP and APIs
+# Solutions: Chapter 19, Talking to the Web: APIs and Web Scraping
 
 Worked solutions to the exercises at the end of Chapter 19 of *Python for All* by Vamsi Krishna Kandala. Try each exercise on your own first. Run the code yourself with the notebook [`ch19_solutions.ipynb`](ch19_solutions.ipynb) or the script `ch19_solutions.py`.
 

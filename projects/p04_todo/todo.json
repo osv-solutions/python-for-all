@@ -1,0 +1,17 @@
+[
+  {
+    "title": "Call Ravi",
+    "due": "2026-10-09",
+    "done": false
+  },
+  {
+    "title": "Buy a birthday card",
+    "due": "2026-10-12",
+    "done": false
+  },
+  {
+    "title": "Learn Python",
+    "due": null,
+    "done": false
+  }
+]

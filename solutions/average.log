@@ -1,0 +1,11 @@
+DEBUG:average: read 12.0
+DEBUG:average: read 15.5
+WARNING:average: skipping 'absent'
+WARNING:average: skipping ''
+DEBUG:average: read 9.0
+ERROR:average: could not read missing.txt
+Traceback (most recent call last):
+  File "/home/claude/python-for-all/solutions/ch22_solutions.py", line 132, in average_file
+    with open(path) as f:
+         ~~~~^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'missing.txt'

@@ -1,0 +1,68 @@
+[
+  {
+    "front": "el perro",
+    "back": "the dog",
+    "due": "2026-10-12",
+    "box": 1
+  },
+  {
+    "front": "el gato",
+    "back": "the cat",
+    "due": "2026-10-12",
+    "box": 1
+  },
+  {
+    "front": "la casa",
+    "back": "the house",
+    "due": "2026-10-12",
+    "box": 1
+  },
+  {
+    "front": "el libro",
+    "back": "the book",
+    "due": "2026-10-12",
+    "box": 1
+  },
+  {
+    "front": "la mesa",
+    "back": "the table",
+    "due": "2026-10-12",
+    "box": 1
+  },
+  {
+    "front": "el agua",
+    "back": "the water",
+    "due": "2026-10-12",
+    "box": 1
+  },
+  {
+    "front": "la ventana",
+    "back": "the window",
+    "due": "2026-10-12",
+    "box": 1
+  },
+  {
+    "front": "el árbol",
+    "back": "the tree",
+    "due": "2026-10-12",
+    "box": 1
+  },
+  {
+    "front": "el coche",
+    "back": "the car / automobile",
+    "due": "2026-10-12",
+    "box": 1
+  },
+  {
+    "front": "la manzana",
+    "back": "the apple",
+    "due": "2026-10-12",
+    "box": 1
+  },
+  {
+    "front": "el queso",
+    "back": "the cheese",
+    "due": "2026-10-12",
+    "box": 1
+  }
+]

@@ -28,7 +28,8 @@ There is rarely only one correct solution. If your code gets the same result in 
 | 16. Virtual Environments and Packages | [ch16_solutions.md](ch16_solutions.md) |
 | 17. Testing Your Code with pytest | [ch17_solutions.md](ch17_solutions.md) |
 | 18. Type Hints and Clean Code | [ch18_solutions.md](ch18_solutions.md) |
-| 19. Talking to the Web: HTTP and APIs | [ch19_solutions.md](ch19_solutions.md) |
+| 19. Talking to the Web: APIs and Web Scraping | [ch19_solutions.md](ch19_solutions.md) |
 | 20. Databases with SQLite | [ch20_solutions.md](ch20_solutions.md) |
 | 21. Doing Many Things at Once | [ch21_solutions.md](ch21_solutions.md) |
 | 22. Command-Line Tools and Packaging | [ch22_solutions.md](ch22_solutions.md) |
+| 23. Desktop Apps with Tkinter | [ch23_solutions.md](ch23_solutions.md) |

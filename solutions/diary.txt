@@ -1,0 +1,3 @@
+2026-10-08  Started Part II
+2026-10-09  Lists!
+2026-10-10  Dictionaries make sense

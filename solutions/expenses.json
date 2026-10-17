@@ -1,0 +1,17 @@
+[
+  {
+    "date": "2026-10-01",
+    "item": "Groceries",
+    "amount": 54.2
+  },
+  {
+    "date": "2026-10-02",
+    "item": "Bus pass",
+    "amount": 30.0
+  },
+  {
+    "date": "2026-10-03",
+    "item": "Lunch, with Ravi",
+    "amount": 18.75
+  }
+]
