@@ -63,6 +63,20 @@ and reports any that fail. If `pytest` is installed, it also runs the tests in
 python run_all.py
 ```
 
+## Feedback and errata
+
+Found a mistake, a program that doesn't run as described, or something that
+could be explained better? Please tell me:
+
+- **Report a problem:** [open an issue](https://github.com/osv-solutions/python-for-all/issues/new/choose),
+  with the page or listing number.
+- **Ask a question or share an idea:** use the **Discussions** tab.
+- **Anything private** (for example, using the book in a course):
+  email pythonforseries@osvsolutions.com.
+
+Confirmed corrections are listed in [ERRATA.md](ERRATA.md) and fixed in later
+printings.
+
 ## The Python for… series
 
 *Python for All* is Book 1 of the *Python for…* series. Each book takes one
