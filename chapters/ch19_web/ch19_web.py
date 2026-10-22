@@ -263,6 +263,28 @@ r = requests.get(f"{BASE}/api/stats", headers={"X-API-Key": key},
                  timeout=5)
 print(r.status_code, r.json())
 
+# %% 19.9 API keys
+# Setup: recreates the context this solution builds on (not printed in the book).
+from pathlib import Path
+
+Path(".env").write_text("# .env: settings for this project, never committed\n"
+                        "BOOKS_API_KEY=practice-key-123\n"
+                        "BOOKS_TIMEOUT=5\n", encoding="utf-8")
+del os.environ["BOOKS_API_KEY"]        # forget the key set above
+
+# %% 19.9 API keys
+from dotenv import load_dotenv
+
+load_dotenv()                     # reads .env into os.environ
+
+key = os.environ.get("BOOKS_API_KEY")
+if key is None:
+    raise SystemExit("Please set BOOKS_API_KEY in .env first.")
+timeout = float(os.environ.get("BOOKS_TIMEOUT", "10"))
+r = requests.get(f"{BASE}/api/stats", headers={"X-API-Key": key},
+                 timeout=timeout)
+print(r.status_code, r.json())
+
 # %% 19.10 Being polite
 r = requests.get(f"{BASE}/api/popular", timeout=5)
 print(r.status_code, r.reason, "| Retry-After:",

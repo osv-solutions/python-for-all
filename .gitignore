@@ -5,3 +5,4 @@ __pycache__/
 .pytest_cache/
 .coverage
 chapters/ch21_concurrency/versions.db
+.env

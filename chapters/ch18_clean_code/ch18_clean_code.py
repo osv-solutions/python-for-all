@@ -133,6 +133,11 @@ def report_lines(scores: dict[str, list[float]]) -> list[str]:
         lines.append(f"{name}: {round(average, 1)} {result(average)}")
     return lines
 
+
+for line in report_lines(cases[1]):
+    print(line)
+
+# %% 18.7 Refactoring step by step
 for case, old in zip(cases, expected):
     assert report_lines(case) == old
 print("same results for", len(cases), "cases")

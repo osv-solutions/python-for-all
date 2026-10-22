@@ -172,7 +172,7 @@ The Hobbit wins with 4.7; Dune is ignored because it has no rating. A shelf with
 
 ## Exercise 18.5
 
-*Run `ruff check`, `ruff check --fix` and `ruff format` on the messy `Shipping_Cost` function.*
+*Run `python -m ruff check`, the same with `--fix`, and `python -m ruff format` on the messy `Shipping_Cost` function.*
 
 The file `shipping.py`:
 
@@ -184,7 +184,7 @@ def Shipping_Cost( Weight,express ):
 ```
 
 ```bash
-ruff check --output-format concise shipping.py
+python -m ruff check --output-format concise shipping.py
 ```
 
 ```output
@@ -195,7 +195,7 @@ Found 3 errors.
 [*] 3 fixable with the `--fix` option.
 ```
 
-`ruff` reports only the imports. Its default rules aim at likely bugs, and leave naming and comparisons such as `== True` to rules you can switch on. `ruff check --fix` removes the import line (`Found 2 errors (2 fixed, 0 remaining).`, because removing the line also settles the sorting problem), and `ruff format shipping.py` reports `1 file reformatted` and rewrites the layout:
+`ruff` reports only the imports. Its default rules aim at likely bugs, and leave naming and comparisons such as `== True` to rules you can switch on. `python -m ruff check --fix shipping.py` removes the import line (`Found 2 errors (2 fixed, 0 remaining).`, because removing the line also settles the sorting problem), and `python -m ruff format shipping.py` reports `1 file reformatted` and rewrites the layout:
 
 ```python
 def Shipping_Cost(Weight, express):
@@ -208,7 +208,7 @@ def Shipping_Cost(Weight, express):
 Four-space indentation, spaces around operators and one statement per line: the formatter did everything about layout. The names and the logic are still yours to fix. Extra rule groups show them: `E` (the rules of the `pycodestyle` tool, which checks PEP 8) and `N` (PEP 8 naming):
 
 ```bash
-ruff check --extend-select E,N --output-format concise shipping.py
+python -m ruff check --extend-select E,N --output-format concise shipping.py
 ```
 
 ```output
@@ -244,7 +244,7 @@ def shipping_cost(weight_kg: float, express: bool = False) -> float:
     return cost
 ```
 
-With the `pyproject.toml` above in the folder, `ruff check` reports `All checks passed!`.
+With the `pyproject.toml` above in the folder, `python -m ruff check shipping.py` reports `All checks passed!`.
 
 ## Exercise 18.6
 
