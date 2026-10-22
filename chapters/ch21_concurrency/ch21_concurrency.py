@@ -309,3 +309,33 @@ elapsed = time.perf_counter() - start
 for name, version in zip(PACKAGES, versions):
     print(f"{name:<10}{version}")
 print(f"took about {elapsed:.1f} s")
+
+# %% 21.6 asyncio: one thread, many waiting tasks
+import aiosqlite
+
+
+async def save_versions(path, pairs):
+    async with aiosqlite.connect(path) as db:
+        await db.execute("CREATE TABLE IF NOT EXISTS versions ("
+                         "name TEXT PRIMARY KEY, version TEXT)")
+        await db.executemany("INSERT OR REPLACE INTO versions "
+                             "VALUES (?, ?)", pairs)
+        await db.commit()
+
+
+asyncio.run(save_versions("versions.db", zip(PACKAGES, versions)))
+
+# %% 21.6 asyncio: one thread, many waiting tasks
+async def show_versions(path):
+    async with aiosqlite.connect(path) as db:
+        db.row_factory = aiosqlite.Row
+        sql = "SELECT name, version FROM versions ORDER BY name"
+        async with db.execute(sql) as cursor:
+            async for row in cursor:
+                print(f"{row['name']:<10}{row['version']}")
+        sql = "SELECT name FROM versions WHERE version LIKE ?"
+        rows = await db.execute_fetchall(sql, ("0.%",))
+        print("still before 1.0:", [row["name"] for row in rows])
+
+
+asyncio.run(show_versions("versions.db"))
