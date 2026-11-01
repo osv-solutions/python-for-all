@@ -87,7 +87,7 @@ book released so far. Titles and order of the planned books may change.
 | # | Title | Status |
 |---|---|---|
 | 1 | Python for All | This book |
-| 2 | Python for Data Science | Coming soon |
+| 2 | Python for Data Science | Available now on Amazon |
 | 3 | Python for Machine Learning | Coming soon |
 | 4 | Python for Deep Learning | Coming soon |
 | 5 | Python for Office Automation | Planned |
